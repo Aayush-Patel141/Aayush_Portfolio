@@ -36,13 +36,42 @@ $('#year').textContent=new Date().getFullYear();
 function card(x){const i=allForLightbox.indexOf(x);return `<article class="work-card" data-index="${i}"><div class="thumb"><img loading="lazy" src="${encodeURI(x.src)}" alt="${x.name} — ${pretty(x.subcategory||x.folder)}"></div><div class="view-mark">↗</div><div class="card-info"><span>${x.name}</span><span>VIEW ↗</span></div></article>`}
 $('#workSections').innerHTML=headings.map((h,i)=>`<section class="category-section"><div class="category-heading"><span class="category-number">${String(i+1).padStart(2,'0')}</span><h3>${h}</h3><span class="category-count">${groups[h].length} WORKS</span></div><div class="gallery">${groups[h].map(card).join('')}</div></section>`).join('');
 $('#certGallery').innerHTML=certs.map(card).join('');
-function showLightbox(index){let x=allForLightbox[index];$('#lbImage').src=encodeURI(x.src);$('#lbImage').alt=x.name;$('#lbName').textContent=x.name+' · '+(x.folder===certFolder?'Certification':pretty(x.subcategory||x.folder));$('#lbPosition').textContent=`${index+1} / ${allForLightbox.length}`;$('#lightbox').classList.add('open');$('#lightbox').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
 let lightIndex=0;
-function closeLightbox(){$('#lightbox').classList.remove('open');$('#lightbox').setAttribute('aria-hidden','true');document.body.style.overflow='';}
+let lightboxHistoryEntry=false;
+function lightboxIsOpen(){return $('#lightbox').classList.contains('open');}
+function showLightbox(index){
+  let x=allForLightbox[index];
+  $('#lbImage').src=encodeURI(x.src);
+  $('#lbImage').alt=x.name;
+  $('#lbName').textContent=x.name+' · '+(x.folder===certFolder?'Certification':pretty(x.subcategory||x.folder));
+  $('#lbPosition').textContent=`${index+1} / ${allForLightbox.length}`;
+  if(!lightboxIsOpen()){
+    const currentState=(history.state&&typeof history.state==='object')?history.state:{};
+    history.pushState({...currentState,portfolioLightbox:true},'',location.href);
+    lightboxHistoryEntry=true;
+    $('#lightbox').classList.add('open');
+    $('#lightbox').setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+}
+function closeLightbox(fromPopState=false){
+  if(!lightboxIsOpen())return;
+  const shouldReturnHistory=lightboxHistoryEntry&&!fromPopState;
+  lightboxHistoryEntry=false;
+  $('#lightbox').classList.remove('open');
+  $('#lightbox').setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  if(shouldReturnHistory)history.back();
+}
 function step(n){lightIndex=(lightIndex+n+allForLightbox.length)%allForLightbox.length;showLightbox(lightIndex);}
+window.addEventListener('popstate',()=>{
+  if(lightboxIsOpen()){
+    closeLightbox(true);
+  }
+});
 document.addEventListener('click',e=>{let c=e.target.closest('.work-card');if(c){lightIndex=Number(c.dataset.index);showLightbox(lightIndex);}});
-$('#lbClose').onclick=closeLightbox;$('#lbPrev').onclick=()=>step(-1);$('#lbNext').onclick=()=>step(1);
+$('#lbClose').onclick=()=>closeLightbox();$('#lbPrev').onclick=()=>step(-1);$('#lbNext').onclick=()=>step(1);
 $('#lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox();});
-document.addEventListener('keydown',e=>{if(!$('#lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
+document.addEventListener('keydown',e=>{if(!lightboxIsOpen())return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
 $('#menuToggle').onclick=()=>$('#nav').classList.toggle('open');
 $('#nav').addEventListener('click',e=>{if(e.target.tagName==='A')$('#nav').classList.remove('open');});
