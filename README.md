@@ -1,28 +1,131 @@
-# My Works — Aayush Akhilesh Patel
+```{=html}
+<p align="center">
+```
+`<img src="assets/readme-banner.png" alt="Aayush Portfolio – Creative Work, Design and Development" width="100%">`{=html}
+```{=html}
+</p>
+```
+```{=html}
+<h1 align="center">
+```
+Aayush Portfolio
+```{=html}
+</h1>
+```
+```{=html}
+<p align="center">
+```
+Personal portfolio for creative work, graphic design, UI/UX, and web
+development.
+```{=html}
+</p>
+```
+```{=html}
+<p align="center">
+```
+`<a href="https://aayush-patel141.github.io/Aayush_Portfolio/">`{=html}View
+Live Portfolio`</a>`{=html}
+```{=html}
+</p>
+```
 
-A responsive static portfolio built with HTML, CSS and JavaScript.
+------------------------------------------------------------------------
 
-## Included
-- One continuous, category-led creative work gallery
-- College Events, Cultural Festivals, Workshops, Awareness Campaigns, Sports, Promotional Designs, ID Cards and other headings
-- All 29 certifications displayed after the creative work
-- Click-to-enlarge image viewer with previous/next navigation and keyboard controls
-- About, skills, education, projects, experience and academic involvement based on the supplied résumé
-- Working email, phone, GitHub, LinkedIn and Drive links
-- Résumé PDF download
+## About
 
-## Update your work
-1. Add images under the relevant existing subfolder in `assets/`.
-2. Run `python update_portfolio.py` to regenerate the image manifest.
-3. Refresh the website.
+This repository contains the source files for my personal portfolio
+website. The portfolio presents selected creative and technical work in
+one place, with dedicated sections for different project categories,
+certifications, and professional information.
 
-For a new subcategory, add a folder under the appropriate assets collection. Update the category mapping in `script.js` if you want a custom display heading.
+**Live website:** https://aayush-patel141.github.io/Aayush_Portfolio/
 
-## Personal details
-Contact and profile details are in `index.html`. The résumé PDF is `Aayush-Patel-Resume.pdf`.
+## Portfolio Categories
 
-## Run and publish
-Open `index.html` locally or use VS Code Live Server. The project can be hosted on GitHub Pages.
+The portfolio is organized around the following areas:
 
-## Visual theme
-The portfolio uses the Salt & Pepper palette: white `#FFFFFF`, light grey `#D4D4D4`, mid grey `#B3B3B3`, and charcoal `#2B2B2B`. Decorative SVG orbit and star-line graphics are inline in the HTML and can be edited there.
+-   **Website UI/UX Design** -- interface layouts and user-experience
+    work.
+-   **Frontend Development** -- website interfaces and client-side
+    implementation.
+-   **Full-Stack Development** -- projects involving frontend and
+    backend development.
+-   **Python & Programming** -- programming-related projects and
+    practical work.
+-   **Graphic Design** -- visual communication and creative design work.
+-   **Certifications** -- certificates and completed learning
+    achievements.
+
+## Website Preview
+
+The banner above is the repository's visual header. For an accurate
+preview of the live website, add a screenshot captured from the actual
+homepage to `assets/portfolio-homepage.png`, then include:
+
+``` md
+![Aayush Portfolio homepage](assets/portfolio-homepage.png)
+```
+
+Do not use a mockup as a screenshot of the live site.
+
+## Design Direction
+
+The website follows a minimal monochrome **Salt & Pepper** visual
+direction, using black, white, charcoal, and grey. Its visual language
+includes geometric SVG elements and motion details. The layout is
+intended to preserve the desktop design while remaining usable on mobile
+devices.
+
+## Technologies
+
+  Technology     Role
+  -------------- ----------------------------------------------
+  HTML5          Page structure and content
+  CSS3           Styling, layout, and responsive presentation
+  JavaScript     Interactive behaviour
+  SVG            Vector graphics and decorative elements
+  GitHub Pages   Static website hosting
+
+## Run Locally
+
+1.  Clone or download this repository.
+2.  Open the project folder in Visual Studio Code or your preferred
+    editor.
+3.  Open `index.html` in a browser.
+4.  For a local development server, use the Live Server extension in
+    Visual Studio Code.
+
+The portfolio is a static front-end website. Basic local viewing does
+not require a backend or build process.
+
+## Deployment
+
+The website is published through GitHub Pages:
+
+https://aayush-patel141.github.io/Aayush_Portfolio/
+
+After committing and pushing changes to the branch configured for GitHub
+Pages, GitHub Pages will publish the updated static site.
+
+## Repository Contents
+
+The repository contains the portfolio's HTML pages, stylesheets,
+JavaScript, images, SVGs, fonts, and other supporting assets. Refer to
+the repository file tree for the current file and folder names.
+
+## Contact
+
+For professional enquiries, collaboration, or to view additional work,
+visit the live portfolio and use the contact details provided there.
+
+------------------------------------------------------------------------
+
+```{=html}
+<p align="center">
+```
+`<strong>`{=html}Aayush Portfolio · Creative Work · Design ·
+Development`</strong>`{=html}
+```{=html}
+</p>
+```
+
